@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { State, Store } from '../../../store'
 @Component({
   selector: 'app-visible-todo-list',
   templateUrl: './visible-todo-list.component.html',
@@ -7,9 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class VisibleTodoListComponent implements OnInit {
 
-  constructor() { }
+  public todos
+
+  constructor(
+    private store: Store<State>
+  ) { }
 
   ngOnInit() {
+    this.store.select('todo', 'todos').subscribe(this.setTodoList)
   }
+
+  setTodoList = data => this.todos = data
 
 }

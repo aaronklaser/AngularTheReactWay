@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { NgRxModule } from '../store/ngrx.module'
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -26,7 +27,8 @@ import { FilterLinkComponent } from './containers/filter-link/filter-link.compon
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgRxModule
   ],
   providers: [],
   bootstrap: [AppComponent]

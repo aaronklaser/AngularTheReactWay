@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { TodoActions } from '../../../store'
 @Component({
   selector: 'app-add-todo',
   templateUrl: './add-todo.component.html',
@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddTodoComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private todoActions: TodoActions
+  ) { }
 
   ngOnInit() {
   }
 
+  addTodo(todo) {
+    this.todoActions.addTodo({ title: todo })
+  }
 }
