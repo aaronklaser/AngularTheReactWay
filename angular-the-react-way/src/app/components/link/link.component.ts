@@ -1,23 +1,26 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnChanges, Input } from '@angular/core';
+import { TodoActions } from './../../../store'
 
 @Component({
   selector: 'app-link',
   templateUrl: './link.component.html',
-  styleUrls: ['./link.component.sass']
+  styleUrls: ['./link.component.scss']
 })
-export class LinkComponent implements OnInit {
+export class LinkComponent implements OnChanges {
 
-  @Input() onClick
-  @Input() filter
   @Input() active
+  @Input() filter
+  @Input() todoActions
 
-  constructor() { }
+  constructor(
+  ) { }
 
-  ngOnInit() {
+  ngOnChanges(changes) {
+    console.log(changes)
+    this.active = changes.active.currentValue
   }
 
-  clickLink(filter) {
-    console.log('clickLink', filter)
-    this.onClick(filter)
+  onClick() {
+    this.todoActions.setVisibilityFilter(this.filter)
   }
 }

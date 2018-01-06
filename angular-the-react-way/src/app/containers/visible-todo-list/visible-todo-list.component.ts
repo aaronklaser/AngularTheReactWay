@@ -3,7 +3,7 @@ import { State, Store } from '../../../store'
 @Component({
   selector: 'app-visible-todo-list',
   templateUrl: './visible-todo-list.component.html',
-  styleUrls: ['./visible-todo-list.component.sass']
+  styleUrls: ['./visible-todo-list.component.scss']
 })
 export class VisibleTodoListComponent implements OnInit {
 

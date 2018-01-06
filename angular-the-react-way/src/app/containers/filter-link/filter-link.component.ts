@@ -1,31 +1,24 @@
-import { TodoActions } from './../../../store';
-import { Component, OnChanges, Input } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { TodoActions, State, Store } from './../../../store'
 
 @Component({
   selector: 'app-filter-link',
   templateUrl: './filter-link.component.html',
-  styleUrls: ['./filter-link.component.sass']
+  styleUrls: ['./filter-link.component.scss']
 })
-export class FilterLinkComponent implements OnChanges {
+export class FilterLinkComponent implements OnInit {
 
-  _filter
-
+  active
   @Input() filter
 
   constructor(
+    private store: Store<State>,
     private todoActions: TodoActions
   ) { }
 
-  ngOnChanges(changes) {
-    console.log('changes', changes)
-    this._filter = changes.filter.currentValue
+  ngOnInit() {
+    this.store.select('todo', 'visibilityFilter').subscribe(this.isActive)
   }
 
-
-  onClick(filter) {
-    console.log(this.todoActions)
-
-    this.todoActions.setVisibilityFilter(filter)
-  }
-
+  isActive = selectedFilter => this.active = this.filter === selectedFilter
 }

@@ -26,7 +26,6 @@ export class TodoActions {
     }
 
     setVisibilityFilter(filter) {
-      console.log('setVisibilityFilter',filter)
       this.store.dispatch({ type: SET_VISIBILITY_FILTER, payload: filter })
     }
 }
