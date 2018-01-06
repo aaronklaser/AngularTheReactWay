@@ -1,0 +1,8 @@
+<div>
+  <form #form>
+    <input type="text" id="todo" [(ngModel)]="todo" name="todo">
+    <button (click)="addTodo(todo); form.reset()">
+      Add Todo
+    </button>
+  </form>
+</div>
