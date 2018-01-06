@@ -13,8 +13,10 @@ export class AddTodoComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  onSubmit() {
+    console.log('HELLO')
+  }
   addTodo(todo) {
-    this.todoActions.addTodo({ title: todo })
+    this.todoActions.addTodo(todo)
   }
 }

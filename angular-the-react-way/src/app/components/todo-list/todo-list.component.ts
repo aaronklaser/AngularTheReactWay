@@ -8,6 +8,7 @@ import { Component, OnInit, Input} from '@angular/core';
 export class TodoListComponent implements OnInit {
 
   @Input() todos
+  @Input() todoActions
 
   constructor() { }
 

@@ -1,23 +1,25 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnChanges, Input } from '@angular/core';
 
 @Component({
   selector: 'app-todo',
   templateUrl: './todo.component.html',
   styleUrls: ['./todo.component.scss']
 })
-export class TodoComponent implements OnInit {
+export class TodoComponent implements OnChanges {
 
+  completed
   @Input() todo
-
-  completed = false
+  @Input() todoActions
 
   constructor() { }
 
-  ngOnInit() {
+  ngOnChanges(changes) {
+    console.log(changes)
+    this.completed = changes.todo.currentValue.completed
   }
 
   onClick() {
     console.log(this.completed)
-    this.completed = !this.completed
+    this.todoActions.toggleTodo(this.todo.id)
   }
 }
